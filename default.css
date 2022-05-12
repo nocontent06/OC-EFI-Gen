@@ -1,0 +1,35 @@
+.noselect {
+    -webkit-touch-callout: none; 
+      -webkit-user-select: none; 
+              user-select: none; 
+  }
+
+.selectedable{
+    user-select: all;   
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.active{
+    background-color: rgb(95, 95, 95);
+}
+
+.btn-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.Font_2_Header{
+    font-size: 20px;
+}
