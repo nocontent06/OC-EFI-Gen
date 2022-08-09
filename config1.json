@@ -1,0 +1,18 @@
+{
+    "Intel": [
+       {
+           "name":"Pentium4",
+           "min": "10.4.1",
+           "max": "10.5.8",
+           "igpu_max": "none",
+           "cpuID": "0x0F41"
+       },
+       {
+           "name":"Yonah",
+           "min": "10.4.4",
+           "max": "10.6.8",
+           "igpu_max": "none",
+           "cpuID": "0x0006E6"
+       }]
+ }
+ 

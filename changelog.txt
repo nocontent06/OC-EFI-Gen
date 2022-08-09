@@ -1,0 +1,7 @@
+1.0 b 3
+
+> Fixed Bug in SSDT-EC copying
+> Added Error if EFI couldn't be copied to the Downloads Folder
+> Added Automatic SSDT Detection (Suggest by @polonie)
+> Added Automatic SMBIOS Detection (NEW! More Button after configuring)
+> You can now choose your Model (Laptop, Desktop,...)

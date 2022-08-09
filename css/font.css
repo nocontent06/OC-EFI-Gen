@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('./font/roboto/Roboto-Medium.ttf');
+  }
+
+@font-face {
+    font-family: Icon;
+    src: url("./font/Icon/iconbrew.ttf");
+}
+
+.Progress-List-Item-Main{
+    font-family: Roboto-Medium;
+    overflow: hidden;
+    font-size: 1.0em;
+    color: #ffffff;
+    display: inline-block;
+    padding-left: 1.1em;
+    transform: translateY(0.2em)
+    
+}
+
+.Progress-List-Item-Sub{
+    font-family: Roboto-Medium;
+    color: #4A4A4A;
+    font-size: 0.8em;
+    display: inline-block;
+    transform: translateY(-6.2em);
+    padding-left: 6.7em;
+
+}
+
+.Progress-List-Item-Icon{
+    font-family: Icon;
+    font-size: 3em;
+    color: #ffffff;
+    display: inline-block;
+    padding-left: 0.5em;
+    
+}
+
+.Progress-List-Item-M{
+    transform: translateY(-8em);
+}
+
+
+.Font_Header{
+    font-family: Roboto-Medium;
+    font-size: 1.5em;
+    color: #282828;
+
+}
+
+#cpry{
+    font-family: Roboto-Medium;
+    display: inline-block;
+    /* transform: translateY(-1.2em); */
+    padding-left: 1.7em;
+    width: 100%;
+    color: #AAA;
+    font-size: 15px;
+}
+
+body{
+    font-family: Roboto-Medium;
+}

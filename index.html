@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+
+
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+
+    <link rel="stylesheet" href="./src/css/layout/Layout_Default.css">
+    <link rel="stylesheet" href="./src/css/default.css">
+    <link rel="stylesheet" href="./src/css/font.css">
+
+    <!--<script src="./index.js"></script>-->
+    <!-- <script src="./src/js/parse.js"></script> -->
+    <script>
+      let version = '0.0.1' 
+      // alert("This Tool creates the Basic EFI Folder for your macOS Installation")
+      // alert("This Tool is currently in Beta, some features MIGHT NOT work")
+      // alert("Version: " + version)
+      var Name = "Not known";
+      if (navigator.appVersion.indexOf("Win") != -1) Name =
+      "Windows";
+      if (navigator.appVersion.indexOf("Mac") != -1) Name =
+      "MacOS";
+      if (navigator.appVersion.indexOf("X11") != -1) Name =
+      "UNIX OS";
+      if (navigator.appVersion.indexOf("Linux") != -1) Name =
+      "Linux OS";
+      alert('OS: ' + Name)
+    </script>
+   <title>OC EFI GenX 1.0 beta 3</title>
+
+  </head>
+
+  <body style="overflow: hidden;">
+    <div class="container">
+
+      <!-- This Displays the Installtion Progress (its mostly crackhead looking CSS since i am not good at CSS @Johncoco12)-->
+      <div class="Layout_Sec noselect">
+
+
+        <div style="transform: translateY(0em);">
+        <p class="Progress-List-Item-Icon active" id="first-item">	&#128421;<p class="Progress-List-Item-Main">    Getting Started   </p><p class="Progress-List-Item-Sub"> Gathering device data</p>
+        </p>
+        </div>
+        <div style="transform: translateY(-9em);"> <p class="Progress-List-Item-Icon " style="padding-left: 0.75em;" id="sec-item">&#10515;<p class="Progress-List-Item-Main" style="padding-left: 3em;">MacOS   </p><p class="Progress-List-Item-Sub"> Choose your version</p></p></div>
+        <div style="transform: translateY(-18.5em);"> <p class="Progress-List-Item-Icon " style="padding-left: 0.65em;" id="trd-item"><img src="./src/resources/acpi-logo.png" alt="acpi-logo" style="width: 50px; transform: translateX(-10px) "><p class="Progress-List-Item-Main" style="padding-left: 2em;">SSDT   </p><p class="Progress-List-Item-Sub"> Choose your SSDTs</p></p></div>
+        <div style="transform: translateY(-28.5em);"> <p class="Progress-List-Item-Icon " id="frt-item">&#128736;<p class="Progress-List-Item-Main" style="padding-left: 2.5em;">Drivers   </p><p class="Progress-List-Item-Sub"> Choose your Drivers</p></p></div>
+
+        <div style="transform: translateY(-38em);"> <p class="Progress-List-Item-Icon " style="padding-left: 0.3em;" id="fth-item"><img src="./src/resources/kexts.png" alt="kext.png" style="width: 50px; transform: translateX(9px); padding-top: 5px;"><p class="Progress-List-Item-Main" style="padding-left: 3em;">Kexts   </p><p class="Progress-List-Item-Sub" style="padding-left: 7em;"> Choose Kexts</p></p></div>
+
+        <div style="transform: translateY(-47em);"> <p class="Progress-List-Item-Icon " style="padding-left: 0.5em;" id="sx-item">🕐<p class="Progress-List-Item-Main" style="padding-left: 2.1em;">Preparing   </p><p class="Progress-List-Item-Sub"> Preparing installation</p></p></div>
+
+        <div style="transform: translateY(-53em);"> <p class="Progress-List-Item-Icon " style="padding-left: 0.75em;" id="svn-item">?<p class="Progress-List-Item-Main" style="padding-left: 3.5em;">Help   </p><p class="Progress-List-Item-Sub"> Join the Discord Server</p></p></div>
+
+        <div style="transform: translateY(-57em);"> <p id="cpry">© Copyright OC EFI GenX <br> 2022-2022<br>by @NoContent_06</p></div>
+
+        <!--<img src="./src/resources/Capy_Side.png" alt="" width="140" height="140" style="transform: translateY(-44.5em);"> -->
+      </div>
+
+
+      <!-- This Contains Diffrent Menus! -->
+      <div class="Layout_Main">
+              <!-- Contains Getting Started Menus-->
+      <div id="Page-GS">
+        <div id="Menu-1">
+            <p class="Font_Header text-center" id="headline">Getting Started with Open Core</p>
+            <!-- <p class="text-center" id="demo">Dumm</p> -->
+            <label for="generation" class="text-center" style="margin-left: 25%;">Choose a Generation:</label>
+            <select id="select" onchange="update_gen(this); onChangeUpdate()" required>
+              <option value="" selected>none</option>
+              <option value="Pentium 4" id="gen0"></option>
+              <option value="Yonah" id="gen1"></option>
+              <option value="Conroe"id="gen2"></option>
+              <option value="Merom" id="gen3"></option>
+              <option value="Penryn"id="gen4"></option>
+              <option value="Nehalem"id="gen5"></option>
+              <option value="Lynnfield"id="gen6"></option>
+              <option value="Clarksfield"id="gen7"></option>
+              <option value="Westmere"id="gen8"></option>
+              <option value="Clarkdale"id="gen9"></option>
+              <option value="Arrandale"id="gen10"></option>
+              <option value="Sandy Bridge"id="gen11"></option>
+              <option value="Ivy Bridge"id="gen12"></option>
+              <option value="Ivy Bridge-E5"id="gen13"></option>
+              <option value="Haswell"id="gen14"></option>
+              <option value="Broadwell"id="gen15"></option>
+              <option value="Skylake"id="gen16"></option>
+              <option value="Kaby Lake"id="gen17"></option>
+              <option value="Kaby Lake R" id="gen17a"></option>
+              <option value="Coffee Lake"id="gen18"></option>
+              <option value="Amber Lake"id="gen19"></option>
+              <option value="Whiskey Lake"id="gen20"></option>
+              <option value="Comet Lake"id="gen21"></option>
+              <option value="Comet Lake Ref"id="gen22"></option>
+              <option value="IceLake"id="gen23"></option>
+              <option value="Rocket Lake"id="gen24"></option>
+              <option value="Tiger Lake"id="gen25"></option>
+                
+              </select>
+              <br>
+             <label for="version" class="text-center" style="margin-left: 25%;">Choose a macOS version:</label>
+              <select id="select_version" onchange="update_ver(this); onChangeUpdate()" required>
+                <option value="" selected>none</option>
+                <option value="10_4" style="display: none;" id="10_4">10.4 (Tiger)</option>
+                <option value="10_5" style="display: none;" id="10_5">10.5 (Leopard)</option>
+                <option value="10_6" style="display: none;" id="10_6">10.6 (Snow Leopard)</option>
+                <option value="10_7" style="display: none;" id="10_7">10.7 (Lion)</option>
+                <option value="10_8" style="display: none;" id="10_8">10.8 (Mountain Lion)</option>
+                <option value="10_9" style="display: none;" id="10_9">10.9 (Mavericks)</option>
+                <option value="10_10" style="display: none;" id="10_10">10.10 (Yosemite)</option>
+                <option value="10_11" style="display: none;" id="10_11">10.11 (El Capitan)</option>
+                <option value="10_12" style="display: none;" id="10_12">10.12 (Sierra)</option>
+                <option value="10_13" style="display: none;" id="10_13">10.13 (High Sierra)</option>
+                <option value="10_14" style="display: none;" id="10_14">10.14 (Mojave)</option>
+                <option value="10_15" style="display: none;" id="10_15">10.15 (Catalina)</option>
+                <option value="11" style="display: none;" id="11">11 (Big Sur)</option>
+                <option value="12" style="display: none;" id="12">12 (Monterey)</option>
+                <option value="13" style="display: none;" id="13">13 (Ventura Beta)</option>
+
+                </select>
+                <label for="model" class="text-center" style="margin-left: 25%;">Choose a Model:</label>
+                  <select id="select_model" onchange="update_model(this); onChangeUpdate()" required>
+                    <option value="" selected>none</option>
+                    <option value="laptop" id="laptop">Laptop</option>
+                    <option value="desktop" id="desktop">Desktop</option>
+                    <option value="hed" id="hed">High End Desktop</option>
+                  </select>
+            </div>
+            <p id="value_gen" class="Font_2_Header text-center"> </p>
+            <p id="value_cpu" class="Font_2_Header text-center"> </p>
+            <p id="value_model" class="Font_2_Header text-center"> </p>
+
+            <fieldset class="fieldset" id="SSDT_fs" style="display: none ;">
+              <legend>ACPI: </legend>
+              <legend>CPU: </legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_CPU_SSDT_PLUG">
+                <label for="ACPI_chkbox_CPU_SSDT_PLUG">SSDT_PLUG.aml</label>
+              </div>
+              <legend>EC: </legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_EC">
+                <label for="ACPI_chkbox_EC_SSDT_EC">SSDT_EC.aml</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_EC_USBX">
+                <label for="ACPI_chkbox_EC_SSDT_EC_USBX">SSDT_EC_USBX.aml</label>
+              </div>
+              <legend>AWAC: </legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_AWAC_AWAC">
+                <label for="ACPI_chkbox_AWAC_AWAC">SSDT_AWAC.aml</label>
+              </div>
+              <legend>NVRAM: </legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_NVRAM_SSDT_PMC">
+                <label for="ACPI_chkbox_NVRAM_SSDT_PMC">SSDT_PMC.aml</label>
+              </div>
+              <legend>USB: </legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="ACPI_chkbox_USB_SSDT_RHUB">
+                <label for="ACPI_chkbox_USB_SSDT_RHUB">SSDT_RHUB.aml</label>
+              </div>
+            </fieldset>
+
+            <fieldset id="drivers_fs" class="fieldset" style="display: none;">
+              <legend>Drivers:</legend>
+              <legend>Universal: (UEFI)</legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_HfsPlus">
+                <label for="Drivers_HfsPlus"><a href="#" class="kext_a" id="driverhfsplus_a" onclick="alert('HfsPlus.efi' 
+                + '\n' 
+                + '\n' 
+                + 'Required for all UEFI Devices'
+                + '\n'
+                + 'Needed for seeing HFS volumes'
+                + '\n' 
+                + '\n'
+                )">HfsPlus.efi</a></label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_OpenRuntime">
+                <label for="Drivers_OpenRuntime"><a href="#" class="kext_a" id="driveropenruntime_a" onclick="alert(
+                   'Required for All Devices'
+                   + '\n'
+                   + 'Replacement for AptioMemoryFix.efi (opens new window), used as an extension for OpenCore to help with patching boot.efi for NVRAM fixes and better memory management.'
+                )">OpenRuntime.efi</a></label>
+              </div>
+              <legend>Legacy: (BIOS)</legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_OpenUsbKbDxe" onclick="alert(
+                  'Required for <=Sandy Bridge'
+                  + '\n'
+                  + 'Used for OpenCore picker on legacy systems running DuetPkg, not recommended and even harmful on UEFI(Ivy Bridge and newer)'
+               )">
+                <label for="Drivers_OpenUsbKbDxe">OpenUsbKbDxe.efi</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_HfsPlusLegacy"  onclick="alert(
+                  'Required for <=Sandy Bridge'
+                  + '\n'
+                  + 'Legacy variant of HfsPlus, used for systems that lack RDRAND instruction support. \n This is generally seen on Sandy Bridge and older(as well as low end Ivy Bridge(i3 and Celerons))'
+               )">
+                <label for="Drivers_HfsPlusLegacy">HfsPlusLegacy.efi</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_HfsPlus32" onclick="alert(
+                  'Required for 32-Bit CPUs (Yonah,...)'
+                  + '\n'
+                  + 'Alternative to HfsPlusLegacy for 32-bit CPUs'
+               )">
+                <label for="Drivers_HfsPlus32" id="label_drv_hfsplus32">HfsPlus32.efi</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="Drivers_OpenPartitionDxe" onclick="alert(
+                  'Required to boot recovery on OS X 10.7 through 10.9'
+               )">
+                <label for="Drivers_OpenPartitionDxe">OpenPartitionDxe.efi (10.7 - 10.9)</label>
+              </div>
+            </fieldset>
+
+            <fieldset id="kext_fs" class="fieldset" style="display: none;">
+              <legend>Kexts:</legend>
+              <div id="div_first_pg" style="display: inline;">
+              <legend>Required:</legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VSMC">
+                <label for="KEXT_VSMC">VirtualSMC.kext (10.4+)</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_LILU">
+                <label for="KEXT_LILU">Lilu.kext (10.4+)</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_WEG">
+                <label for="KEXT_WEG">WhateverGreen.kext (10.6+)</label>
+              </div>
+              <legend>VirtualSMC Plugins:</legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VSMC_Processor">
+                <label for="KEXT_LILU">SMCProcessor.kext (10.7+)</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VSMC_SuperIO">
+                <label for="KEXT_LILU"><a href="#" class="kext_a" id="smcsuperiokext">SMCSuperIO.kext (10.6+)</a></label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VSMC_LightSensor">
+                <label for="KEXT_LILU"><a href="#" class="kext_a" id="smcsuperiokext">SMCLightSensor.kext (10.6+)</a></label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VSMC_BatteryManager">
+                <label for="KEXT_VSMC_BatteryManager"><a href="#" class="kext_a" id="KEXT_VSMC_BatteryManager">SMCBatteryManager.kext (10.4+)</a></label>
+              </div>
+              <legend>Audio:</legend>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_AALC">
+                <label for="KEXT_AALC">AppleALC.kext (10.8+)</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VoodooHDA">
+                <label for="KEXT_VoodooHDA">VoodooHDA.kext (10.6+)</label>
+              </div>
+              <div class="div_chkbox">
+                <input type="checkbox" id="KEXT_VoodooHDA-FAT">
+                <label for="KEXT_VoodooHDA-FAT">VoodooHDA-FAT.kext (10.4-10.5 (32/64-Bit))</label>
+              </div>
+
+              <div>
+                <a href="#" onclick="sec_pg()" class="pg_icon">--></a>
+              </div>
+              </div>
+              <div id="div_sec_pg" style="display: none;">
+                <legend>Ethernet:</legend>
+                <legend>UEFI:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_IntelMausi">
+                  <label for="KEXT_IntelMausi">IntelMausi.kext (10.9+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_STI82">
+                  <label for="KEXT_STI82">SmallTreeIntel82576.kext (Onclick for more info)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_AE2E">
+                  <label for="KEXT_AE2E">AtherosE2200Ethernet.kext (10.8+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_RTRTL81">
+                  <label for="KEXT_RTRTL81">RealtekRTL8111.kext (Onclick for more info)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_LRTL81E">
+                  <label for="KEXT_LRTL81E">LucyRTL8125Ethernet.kext (10.15+)</label>
+                </div>
+                <legend>Legacy:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_AIe1000e">
+                  <label for="KEXT_AIe1000e">AppleIntele1000e.kext (10.6+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_RTRTL8100">
+                  <label for="KEXT_RTRTL8100">RealtekRTL8100.kext (10.12+ (v2))</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_BCM5">
+                  <label for="KEXT_BCM5">BCM5722D.kext (10.6+)</label>
+                </div>
+                <div>
+                  <a href="#" onclick="thd_pg()" class="pg_icon">--></a>
+                </div>
+              </div>
+              
+              <div id="div_thd_pg" style="display: none;">
+                <legend>USB:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_USBIJA">
+                  <label for="KEXT_USBIJA">USBInjectAll.kext (10.11+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_HORDS">
+                  <label for="KEXT_HORDS">HoRNDIS.kext (10.4+)</label>
+                </div>
+                <div>
+                  <a href="#" onclick="frt_pg()" class="pg_icon">--></a>
+                </div>
+              </div>
+
+              <div id="div_frt_pg" style="display: none;">
+                <legend>WiFi & Bluetooth:</legend>
+                <legend>Intel:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_APItL">
+                  <label for="KEXT_APItL">AirportItLwm.kext (10.13+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_IBF">
+                  <label for="KEXT_IBF">IntelBluetoothFirmware.kext (10.13+)</label>
+                </div>
+                <legend>Broadcom:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_ABRCMF">
+                  <label for="KEXT_ABRCMF">AirportBrcmFixup.kext (10.10+)</label>
+                </div>
+                <legend>Extras:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_AMCERD">
+                  <label for="KEXT_AMCERD">AppleMCEReporterDisabler.kext (10.15+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_CPUTSCS">
+                  <label for="KEXT_CPUTSCS">CPUTscSync.kext (10.8+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_NVMeF">
+                  <label for="KEXT_NVMeF">NVMeFix.kext (10.14+)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_SUnsup">
+                  <label for="KEXT_SUnsup">SATA-Unsupported.kext (10.14+)</label>
+                </div>
+                <div>
+                  <a href="#" onclick="fth_pg()" class="pg_icon"> --> </a>
+                </div>
+              </div>
+              <div id="div_fth_pg" style="display: none;">
+                <legend>Legacy SATA Kexts:</legend>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_AHCIPI">
+                  <label for="KEXT_AHCIPI">AHCIPortInjector.kext (Penryn)</label>
+                </div>
+                <div class="div_chkbox">
+                  <input type="checkbox" id="KEXT_ATAPI">
+                  <label for="KEXT_ATAPI">ATAPortInjector.kext (When no AHCI Option in BIOS)</label>
+                </div>
+              </div>
+            </fieldset>
+            
+            <!--<script>
+              const fs = require('fs');
+              const path = './config.json'
+              const fileContents = fs.readFileSync(path, 'utf8');
+
+
+              let data = JSON.parse(fileContents);
+              console.log(data);
+
+              for (let i = 0; i < data.Intel.length; i++) {
+                  let app = data.Intel[i];
+                  console.log(app.Arrandale);
+                  document.getElementById("demo").innerHTML = "app.Arrandale.min"
+              }
+
+            </script>-->
+            <div id="loader_div" style="display: none;">
+              <div class="loader"></div>
+            </div>
+            <div id="text-gen-efi" style="display: none">
+              <p class="text-center" style="margin-top: 400px; display: none" id="text-gen-efi-p">Generating EFI...</p>
+            </div>
+            
+            <div style="display:none;" id="tada-div" class="animate-bottom">
+              <h2 class="text-center">Your EFI is ready!</h2>
+              <p class="text-center">If there are any Problems feel free to <br> <a href="https://discord.gg/hyTP8ynDAz" target="_blank">Join my Discord</a></p>
+              <br><br><br><p id="err_cp" style="display: none;">An error occured copying the Folder into your Downloads Folder! Maybe you are running the program from another drive?</p>
+            </div>
+            <div style="display: none;" id="more_div">
+              <button id="a_more" onclick="btn_more_onclick()">More...</a>
+            </div>
+            <!-- <button id="btn-more" onclick="alert('clicked')">More...</button> -->
+            <button class="btn-btn" id="btn-nxt" onclick="on_button_update()">Next</button>
+            <!-- <button class="back-btn" id="btn-back" onclick="on_button_update()">Back</button> -->
+            <script src="./src/js/parse.js"></script>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+    <!--<script>
+      document.getElementById("demo").innerHTML = "Help"
+    </script>-->
+   
+  </body> 
+
+</html>
