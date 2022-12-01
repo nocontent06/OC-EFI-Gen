@@ -1,7 +1,7 @@
 //
 //        OC-EFI-Gen - OpenCore configurtor
 //
-//       Created by Jason Jesse Huber (JJH) (c) 2022
+//       Created by Felix Pirs @NoContent_06 (c) 2022
 //
 ///////////////////////////////////////////////////////////
 
